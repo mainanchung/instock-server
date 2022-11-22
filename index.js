@@ -9,10 +9,10 @@ app.use(express.json())
 app.use(express.static('public'));
 
 const inventoryRoutes = require('./routes/inventory');
-const wareHouseRoutes =  require('./routes/wareHouse');
+const wareHouseRoutes =  require('./routes/warehouse');
 
 app.use('/inventory', inventoryRoutes);
-app.use ('/wareHouse', wareHouseRoutes);
+app.use ('/warehouse', wareHouseRoutes);
 
 app.get("/", (req, res) => {
     res.send("Testing"); 
