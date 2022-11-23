@@ -1,0 +1,10 @@
+# get http://localhost:8080/inventory/f6fbc40a-0471-4557-a073-e7e88ede2ebc
+
+patch http://localhost:8080/inventory/f6fbc40a-0471-4557-a073-e7e88ede2ebc  HTTP/1.1
+content-type: application/json
+
+{
+   "item_name": "JAPAN",
+    "description": "LOVEEEEEEE"
+}
+
