@@ -9,6 +9,6 @@ router.route('/')
 
 router.route('/:id')
     .get(warehouseController.warehouseById)
-    .patch(warehouseController.warehouseUpdate);
-
+    .patch(warehouseController.warehouseUpdate)
+    .delete(warehouseController.warehouseDelete);
 module.exports = router;
