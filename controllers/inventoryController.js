@@ -15,19 +15,14 @@ exports.index = (req, res) => {
 exports.addInventory = (req, res) => {
     const {warehouse_id, item_name, description, category, quantity, status} = req.body;
     let id = uuidv4();
-
+    if(!warehouse_id||!item_name||!description||!category||!quantity||!status)
+        return res.json("Error, all fields must be complete");
     knex("inventories")
         .insert({id, warehouse_id, item_name, description, category, quantity, status})
             .then((data) =>{
-                //0 signifies that the post request was sucessful 
-                if (data === 0)
-                return res.json(
-                 "message : Created inventory successfully."
-                    
-                );
-                // res.json({
-                //     message: 'Created inventory successfully.'
-                // });
+                res.json({
+                    message: 'Created inventory successfully.'
+                });
             }).catch((error) => {
                 console.log(error)
             })
