@@ -1,3 +1,5 @@
+const { restart } = require('nodemon');
+
 const knex = require('knex')(require('../knexfile'))
 
 exports.index = (req, res) => {
@@ -42,4 +44,16 @@ exports.warehouseUpdate = (req, res) => {
         .catch((error) =>{
             res.status(400).send(`Invalid field input: ${error}`)
         })
+}
+
+exports.warehouseDelete = (req, res) => {
+    knex("warehouses")
+    .where({id: req.params.id})
+    .del()
+    .then(() =>{
+        res.status(200).send(`Warehouse deleted!`)
+    })
+    .catch((error) => {
+        res.status(400).send(`Cannot delete: ${error}`)
+    })
 }
