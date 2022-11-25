@@ -13,7 +13,6 @@ exports.index = (req, res) => {
 }
 
 exports.getInventoryById = (req, res) => {
-    console.log("YOOOOOOOO!!!!")
     knex("inventories")
     .where({id:req.params.id})
     .then((data) =>{
@@ -24,7 +23,6 @@ exports.getInventoryById = (req, res) => {
 }
 
 exports.inventoryItemUpdate = (req, res) => {
-    console.log("YOOOOOOOO")
     knex("inventories")
     .where({id:req.params.id})
     .update(req.body)
