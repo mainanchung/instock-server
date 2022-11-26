@@ -35,6 +35,19 @@ exports.inventoryItemUpdate = (req, res) => {
     })
 }
 
+exports.deleteInventoryById = (req, res) => {
+    knex("inventories")
+    .where({id:req.params.id})
+    .del()
+    .then(() =>{
+        res.status(200).send('Item deleted!')
+    })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).send(`Cannot delete: ${error}`)
+    })
+}
+
 exports.addInventory = (req, res) => {
     const {warehouse_id, item_name, description, category, quantity, status} = req.body;
     let id = uuidv4();

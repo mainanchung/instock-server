@@ -1,6 +1,7 @@
 const { restart } = require('nodemon');
 
 const knex = require('knex')(require('../knexfile'))
+const { v4: uuidv4 } = require('uuid');
 
 exports.index = (req, res) => {
     knex('warehouses')
@@ -46,6 +47,20 @@ exports.warehouseUpdate = (req, res) => {
         })
 }
 
+exports.addWarehouse = (req, res) => {
+    let id = uuidv4();
+    const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email} = req.body;
+    if (!warehouse_name || !address || !city || !country || !contact_name || !contact_position || !contact_phone || !contact_email) return res.json("Error, all fields must be complete");
+    knex("warehouses") // table to work with
+        .insert({...req.body, id})
+        .then((data) => {
+            res.status(201).json(data); // 201 created something
+        })
+        .catch((error) =>{
+            res.status(400).send(`Invalid field input: ${error}`)
+        })
+}
+
 exports.warehouseDelete = (req, res) => {
     knex("warehouses")
     .where({id: req.params.id})
@@ -57,3 +72,4 @@ exports.warehouseDelete = (req, res) => {
         res.status(400).send(`Cannot delete: ${error}`)
     })
 }
+
