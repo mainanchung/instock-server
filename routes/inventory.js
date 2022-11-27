@@ -7,5 +7,9 @@ router.route("/")
     .get(inventoryController.index)
     .post(inventoryController.addInventory);
 
+router.route("/:id")    
+    .get(inventoryController.getInventoryById)
+    .patch(inventoryController.inventoryItemUpdate)
+    .delete(inventoryController.deleteInventoryById);
 
 module.exports = router;
