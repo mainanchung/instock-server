@@ -64,3 +64,12 @@ exports.addInventory = (req, res) => {
             })
 }
 
+exports.getCategories = (req, res) => {
+    knex("inventories")
+    .distinct()
+    .select ('category')
+    .then((data) => {
+        res.status(200).json(data)
+    })
+}
+
