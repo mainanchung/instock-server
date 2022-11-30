@@ -1,8 +1,29 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "nodemon": "^2.0.20"
-  }
+    "knex": "^2.3.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
+  },
+  "name": "instock-server",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davonbl-bl/instock-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davonbl-bl/instock-server/issues"
+  },
+  "homepage": "https://github.com/davonbl-bl/instock-server#readme"
 }
